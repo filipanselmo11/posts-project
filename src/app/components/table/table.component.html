@@ -1,0 +1,74 @@
+<div class="w-full sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto bg-gray-300 shadow-lg rounded-lg overflow-hidden mt-3">
+  <div class="px-6 py-4">
+    <div class="flex font-bold text-xl mb-2 space-x-11">
+      <span>Posts</span>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="min-w-full bg-gray-200">
+        <thead>
+          <tr>
+            <th
+              class="py-2 px-4 border-b border-gray-200 bg-gray-100 text-center text-sm leading-4 font-semibold text-gray-600">
+              Id
+            </th>
+            <th
+              class="py-2 px-4 border-b border-gray-200 bg-gray-100 text-center text-sm leading-4 font-semibold text-gray-600">
+              User Id
+            </th>
+            <th
+              class="py-2 px-4 border-b border-gray-200 bg-gray-100 text-center text-sm leading-4 font-semibold text-gray-600">
+              Title
+            </th>
+            <th
+              class="py-2 px-4 border-b border-gray-200 bg-gray-100 text-center text-sm leading-4 font-semibold text-gray-600">
+              Body
+            </th>
+            <th
+              class="py-2 px-4 border-b border-gray-200 bg-gray-100 text-center text-sm leading-4 font-semibold text-gray-600">
+              Comment
+            </th>
+            <th
+              class="py-2 px-4 border-b border-gray-200 bg-gray-100 text-center text-sm leading-4 font-semibold text-gray-600">
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let post of posts">
+            <td class="py-2 px-4 border-b border-gray-200 text-sm text-black text-center">
+              {{ post.id }}
+            </td>
+            <td class="py-2 px-4 border-b border-gray-200 text-sm text-black text-center">
+              {{ post.userId }}
+            </td>
+            <td class="py-2 px-4 border-b border-gray-200 text-sm text-black text-center">
+              {{ post.title }}
+            </td>
+            <td class="py-2 px-4 border-b border-gray-200 text-sm text-black text-center">
+              {{ post.body }}
+            </td>
+            <td class="py-2 px-4 border-b border-gray-200 text-sm text-black text-center">
+              {{ post.comment }}
+            </td>
+            <td class="py-2 px-4 border-b border-gray-200">
+              <div class="flex space-x-3">
+                <app-button
+                  label="Editar"
+                  type="secondary"
+                  (buttonClick)="handleEditButton($event)"
+                  icon="edit">
+                </app-button>
+                <app-button
+                  label="Excluir"
+                  type="danger"
+                  (buttonClick)="handleDeleteButton()"
+                  icon="delete">
+                </app-button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
