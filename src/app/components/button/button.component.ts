@@ -10,10 +10,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ButtonComponent {
   @Input() label!: string;
   @Input() type: 'primary' | 'secondary' | 'success' | 'danger' = 'primary';
-  @Input() icon: 'edit' | 'delete' | 'create' = 'edit';
-  @Output() buttonClick = new EventEmitter<Event>();
+  @Input() iconClass!: string;
+  @Output() buttonClick = new EventEmitter();
 
-  handleClick(event: Event): void {
-    this.buttonClick.emit(event);
+  handleClick(): void {
+    this.buttonClick.emit();
   }
 }

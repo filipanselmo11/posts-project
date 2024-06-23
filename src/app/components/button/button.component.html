@@ -6,9 +6,6 @@
     'bg-red-500 hover:bg-red-700 text-white': type === 'danger',
     'py-2 px-4 rounded flex items-center': true
   }"
-  (click)="handleClick($event)">
-  <i [ngClass]="{
-    'fa-solid fa-user': icon === 'create',
-    'fas fa-pencil-alt': icon === 'edit',
-    'fa-solid fa-delete': icon === 'delete'}"></i>
+  (click)="handleClick()">
+  <i [class]="iconClass"></i>
 </button>
