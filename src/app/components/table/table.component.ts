@@ -12,20 +12,20 @@ import { ButtonComponent } from '../button/button.component';
 })
 export class TableComponent {
   @Input() posts: PostInterface[] = [];
-  @Input() post!: any;
   @Output() editButtonClick = new EventEmitter<Event>();
-  @Output() deleteButtonClick = new EventEmitter<number>();
-  @Output() createButtonClick = new EventEmitter<Event>();
+  @Output() deleteButtonClick = new EventEmitter<any>();
+  @Output() addButtonClick = new EventEmitter<Event>();
+  @Input() post!: any;
 
-  handleCreateButton(event: Event): void {
-    this.createButtonClick.emit(event);
+  handleAddButton() {
+    this.addButtonClick.emit();
   }
 
   handleDeleteButton() {
     this.deleteButtonClick.emit(this.post.id);
   }
 
-  handleEditButton(event: Event): void {
-    this.editButtonClick.emit(event);
+  handleEditButton() {
+    this.editButtonClick.emit();
   }
 }

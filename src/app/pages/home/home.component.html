@@ -2,43 +2,53 @@
   <app-loading></app-loading>
 </div>
 <div *ngIf="!loading">
-  <button
-    class="px-4 py-2 bg-blue-500 text-white text-base font-medium rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-    (click)="openModal()">
-    Open Modal</button>
-  <app-dialog [isVisible]="isVisible" (close-modal)="closeModal()">
-    <form [formGroup]="postForm">
-      <app-input
-        formControlName="userId"
-        inputName="userId"
-        type="number"
-        label="User Id"
-        placeholder="Id do usuário">
-      </app-input>
-      <app-input
-        formControlName="title"
-        inputName="title"
-        type="text"
-        label="Title"
-        placeholder="Titulo do texto">
-      </app-input>
-      <app-textarea
-        formControlName="body"
-        textName="body"
-        label="Body"
-        textPlaceholder="Corpo do texto">
-      </app-textarea>
-      <app-textarea
-        formControlName="comment"
-        textName="comment"
-        label="Comment"
-        textPlaceholder="Comentário do texto"
-      ></app-textarea>
-      <app-button
-        iconClass="ri-home-line"
-        (buttonClick)="onSubmit()"></app-button>
-    </form>
+  <app-dialog [isVisible]="isVisible">
+      <div *ngIf="loading">
+        <app-loading></app-loading>
+      </div>
+      <div *ngIf="!loading">
+        <form [formGroup]="postForm">
+          <app-input
+            formControlName="userId"
+            inputName="userId"
+            type="number"
+            label="User Id"
+            placeholder="Id do usuário">
+          </app-input>
+          <app-input
+            formControlName="title"
+            inputName="title"
+            type="text"
+            label="Title"
+            placeholder="Titulo do texto">
+          </app-input>
+          <app-textarea
+            formControlName="body"
+            textName="body"
+            label="Body"
+            textPlaceholder="Corpo do texto">
+          </app-textarea>
+          <app-textarea
+            formControlName="comment"
+            textName="comment"
+            label="Comment"
+            textPlaceholder="Comentário do texto"></app-textarea>
+            <div class="text-center">
+              <app-button
+                iconClass="ri-add-line"
+                (buttonClick)="createPost()"></app-button>
+              <app-button
+                iconClass="ri-close-line"
+                type="danger"
+                (buttonClick)="closeModal()"></app-button>
+            </div>
+        </form>
+      </div>
   </app-dialog>
-  <app-table [posts]="posts" [post]="post" (deleteButtonClick)="deletePost(post.id)"
-    (editButtonClick)="updatePost()"></app-table>
+  <app-table
+    [posts]="posts"
+    (addButtonClick)="openModal()"
+    (deleteButtonClick)="deletePost($event)"
+    (editButtonClick)="updatePost()">
+  </app-table>
 </div>

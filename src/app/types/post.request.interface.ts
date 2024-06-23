@@ -1,5 +1,4 @@
-export interface PostInterface {
-  id?: number;
+export interface PostRequestInterface {
   userId: number;
   title: string;
   body: string;
